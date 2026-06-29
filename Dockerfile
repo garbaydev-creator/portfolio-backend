@@ -22,7 +22,8 @@ RUN ./mvnw clean package -DskipTests
 EXPOSE 8080
 
 # On lance l'application AVEC les variables d'environnement
-CMD java -jar target/portfolio-backend-0.0.1-SNAPSHOT.jar \
-  --spring.datasource.url=${SPRING_DATASOURCE_URL} \
-  --spring.datasource.username=${SPRING_DATASOURCE_USERNAME} \
-  --spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
+CMD java \
+  -Dspring.datasource.url=$SPRING_DATASOURCE_URL \
+  -Dspring.datasource.username=$SPRING_DATASOURCE_USERNAME \
+  -Dspring.datasource.password=$SPRING_DATASOURCE_PASSWORD \
+  -jar target/portfolio-backend-0.0.1-SNAPSHOT.jar
