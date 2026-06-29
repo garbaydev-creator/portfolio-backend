@@ -21,5 +21,8 @@ RUN ./mvnw clean package -DskipTests
 # On expose le port 8080
 EXPOSE 8080
 
-# On lance l'application
-CMD ["java", "-jar", "target/portfolio-backend-0.0.1-SNAPSHOT.jar"]
+# On lance l'application AVEC les variables d'environnement
+CMD java -jar target/portfolio-backend-0.0.1-SNAPSHOT.jar \
+  --spring.datasource.url=${SPRING_DATASOURCE_URL} \
+  --spring.datasource.username=${SPRING_DATASOURCE_USERNAME} \
+  --spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
